@@ -22,6 +22,7 @@
 #define NEWNET_RATELIMITER_H
 
 #include "nnobject.h"
+#include <unistd.h>
 
 namespace NewNet
 {

@@ -26,6 +26,10 @@
 #include <libxml/parser.h>
 #include <libxml/tree.h>
 #include <cstring>
+#include <stdint.h>
+
+typedef unsigned int uint;
+
 
 Museek::ConfigManager::ConfigManager() : m_AutoSave(true)
 {

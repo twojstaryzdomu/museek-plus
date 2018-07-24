@@ -208,6 +208,8 @@ int main(int argc, char ** argv)
 #ifndef WIN32
   signal(SIGHUP, &museekd_signal_handler);
   signal(SIGALRM, &museekd_signal_handler);
+  /* Ignore SIGPIPE in case we end up trying to write to a closed file descriptor for whatever reason */
+  signal(SIGPIPE, SIG_IGN);
 #endif // WIN32
   signal(SIGINT, &museekd_signal_handler);
 
