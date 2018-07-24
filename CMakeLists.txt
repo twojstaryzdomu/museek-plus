@@ -3,7 +3,7 @@ project(museek-plus)
 cmake_minimum_required(VERSION 2.8.3)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
-
+set(CMAKE_CXX_STANDARD 14)
 enable_language(CXX)
 
 # Include some cmake checks.
@@ -32,7 +32,7 @@ if(EVERYTHING)
     set(OPTIONAL_DEFAULT ON)
     set(FORCE_CACHE FORCE)
 else()
-    set(OPTIONAL_DEFAULT OFF)
+    set(OPTIONAL_DEFAULT ON)
 endif()
 unset(EVERYTHING CACHE)
 

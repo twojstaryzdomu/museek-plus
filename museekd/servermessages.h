@@ -28,6 +28,10 @@ class ServerMessage : public NetworkMessage {
 protected:
     void default_garbage_collector() { }
 };
+
+#define SLSK_MAJOR_VERSION 0x9DDEAD
+#define SLSK_MINOR_VERSION 0x64BEEF
+
 #define SERVERMESSAGE(mtype, m_id) NETWORKMESSAGE(ServerMessage, mtype, m_id)
 
 #define SINTEGERMESSAGE(mtype, m_id) \
@@ -94,9 +98,9 @@ SERVERMESSAGE(SLogin, 1)
 	MAKE
 		pack(username);
 		pack(password);
-		pack((uint32)183);
+		pack((uint32) SLSK_MAJOR_VERSION);
 		pack(digest);
-		pack((uint32)1);
+		pack((uint32) SLSK_MINOR_VERSION);
 
 	END_MAKE
 
