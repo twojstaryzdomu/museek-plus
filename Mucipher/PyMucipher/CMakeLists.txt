@@ -4,6 +4,7 @@
 project(PyMucipher)
 
 cmake_policy(SET CMP0078 NEW)
+cmake_policy(SET CMP0086 NEW)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 
