@@ -29,8 +29,8 @@ protected:
     void default_garbage_collector() { }
 };
 
-#define SLSK_MAJOR_VERSION 0x9DDEAD
-#define SLSK_MINOR_VERSION 0x64BEEF
+#define SLSK_MAJOR_VERSION 157
+#define SLSK_MINOR_VERSION 100
 
 #define SERVERMESSAGE(mtype, m_id) NETWORKMESSAGE(ServerMessage, mtype, m_id)
 
