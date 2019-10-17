@@ -61,7 +61,7 @@ int get_lock(void)
 /* Our signal handler, stop the reactor if we receive a HUP or INT signal. */
 static void museekd_signal_handler(int signal)
 {
-    if (signal == SIGINT) {
+    if (signal == SIGINT || signal == SIGKILL) {
         NNLOG("museekd.debug", "Trapped signal %i. Stopping the reactor.", signal);
         museekd->reactor()->stop();
     }
@@ -85,6 +85,7 @@ static void museekd_signal_handler(int signal)
   ::signal(SIGALRM, &museekd_signal_handler);
 #endif // WIN32
   ::signal(SIGINT, &museekd_signal_handler);
+  ::signal(SIGKILL, &museekd_signal_handler);
 }
 
 /* Timeout callback to connect to the server. Not really required, could
@@ -212,6 +213,7 @@ int main(int argc, char ** argv)
   signal(SIGPIPE, SIG_IGN);
 #endif // WIN32
   signal(SIGINT, &museekd_signal_handler);
+  signal(SIGKILL, &museekd_signal_handler);
 
   /* Add a timeout callback: Wait 5 seconds, then connect to the server. */
   museekd->reactor()->addTimeout(5000, new AutoConnectCallback);
