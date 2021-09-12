@@ -516,8 +516,11 @@ Museek::PeerSocket::initiateOurself()
     HInitiate handshake(museekd()->server()->username(), type(), token());
     sendMessage(handshake.make_network_packet());
 
+#ifdef __APPLE__
+    museekd()->peers()->onCannotConnectOurself(this);
+#else
     m_CannotConnectOurselfCallback = cannotConnectEvent.connect(this, & PeerManager::onCannotConnectOurself);
-
+#endif
     uint port = museekd()->peers()->peerFactory()->serverSocket()->listenPort();
 
     if(port == 0) {
